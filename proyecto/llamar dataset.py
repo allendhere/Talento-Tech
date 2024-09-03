@@ -4,8 +4,10 @@ import csv
 archivo_csv = 'proyecto/heart_attack_dataset.csv'
 
 # Inicializamos contadores
-contador_male = 0
-contador_female = 0
+Lifestyle_Changes = 0
+Angioplasty = 0
+
+Medication = 0
 
 with open(archivo_csv, encoding='latin1') as fichero_csv:
     lector = csv.reader(fichero_csv)
@@ -15,11 +17,18 @@ with open(archivo_csv, encoding='latin1') as fichero_csv:
     # Recorremos las filas del archivo
     for fila in lector:
         # La primera columna está en la posición 0
-        valor_genero = fila[0]
+        valor_genero = fila[7]
 
-        if valor_genero.lower() == 'male':
-            contador_male += 1
-        elif valor_genero.lower() == 'female':
-            contador_female += 1
+        if valor_genero.lower() == 'lifestyle changes':
+            Lifestyle_Changes += 1
+        elif valor_genero.lower() == 'angioplasty':
+            Angioplasty += 1
+            
 
-print(f"Hay {contador_male} registros 'Male' y {contador_female} registros 'Female'.")
+        elif valor_genero.lower() == 'medication':
+            Medication += 1
+
+print(f"{Lifestyle_Changes} registros 'Lifestyle Changes'.")
+print(f"{Angioplasty} registros 'Angioplasty'.")
+
+print(f"{Medication} registros 'Medication'.")
